@@ -1,17 +1,30 @@
 <template>
-  <div class="container">
-    <div>
-      Work in progress
+  <div class="container bg-black">
+    <div class="w-full mx-16">
+      <CaseEntry 
+      v-for="projectInfo in projectInfo"
+      :key="projectInfo.id"
+      :projectInfo="projectInfo"
+      />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import CaseEntry from '~/components/CaseEntry.vue'
+import {projectInfo} from "@/assets/data/projects.js"
+export default {
+  data() {
+    return {
+      projectInfo: projectInfo
+    }
+  }
+}
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
+/* Sample
+CaseEntry `apply` at-rules with Tailwind CSS
 .container {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
@@ -26,16 +39,8 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
